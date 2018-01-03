@@ -5,24 +5,24 @@ void testApp::setup(){
     
 	ofBackground(255,255,255);
 	ofNoFill();
-    faceNavi.loadFont(OF_TTF_SANS ,15);  //latin
+    faceNavi.loadFont("simhei.ttf" ,15);  //latin
 	  
 
 	//Load three font-faces.//////////////////////////////////////////////////////////
 
 
     //Load japanse face.
-    face.loadFont("Yumin Demibold",24,true,true,0.3f,0,true)|| // windows 8.1
+    face.loadFont("simhei.ttf",24,true,true,0.3f,0,true)|| // windows 8.1
 		face.loadSubFont("YuMincho")|| // osx mavericks
 		face.loadSubFont("Meiryo")|| // windows 7
 		face.loadSubFont("Hiragino Mincho ProN W3"); // osx 
 	
 	//Load Latin face.   Fontsize = 120% , Baseline =-2% (to under)
-	face.loadSubFont(OF_TTF_SERIF,1.2,-0.02);  //latin (OF_TTF_SERIF having arabic faces.)
+	//oadSubFont("simhei.ttf",1.2,-0.02);  //latin (OF_TTF_SERIF having arabic faces.)
 
 	//Load arabic face.   UNICODE:0x0600-0x06FF
-    face.loadSubFont("Traditional Arabic",1,-0.04,0x0600,0x06FF)|| // windows
-		face.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");  // osx (Geeza need to set scriptTag.)
+    //face.loadSubFont("simhei",1,-0.04,0x0600,0x06FF)|| // windows
+//		face.loadSubFont("Geeza Pro",1,-0.04,0x0600,0x06FF,"arab");  // osx (Geeza need to set scriptTag.)
 
 
 

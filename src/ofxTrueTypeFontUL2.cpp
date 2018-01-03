@@ -688,6 +688,7 @@ static string winFontPathByName( string fontname ){
 #ifdef TARGET_LINUX
 static string linuxFontPathByName(string fontname){
 	string filename;
+	/*
 	FcPattern * pattern = FcNameParse((const FcChar8*)fontname.c_str());
 	FcBool ret = FcConfigSubstitute(0,pattern,FcMatchPattern);
 	if(!ret){
@@ -710,6 +711,7 @@ static string linuxFontPathByName(string fontname){
 		ofLogError() << "linuxFontPathByName(): couldn't find font match for \"" << fontname << "\"";
 		return "";
 	}
+	*/
 	return filename;
 }
 #endif
@@ -1999,10 +2001,10 @@ bool ofxTrueTypeFontUL2::initLibraries(){
 			return false;
 		}
 #ifdef TARGET_LINUX
-		FcBool result = FcInit();
-		if(!result){
-			return false;
-		}
+//		FcBool result = FcInit();
+//		if(!result){
+//			return false;
+//		}
 #endif
 #ifdef TARGET_WIN32
 		initWindows();

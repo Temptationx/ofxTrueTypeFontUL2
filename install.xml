@@ -1,0 +1,26 @@
+<install>
+
+	<version>0.1</version>
+	<author>TianShan</author>
+	<url>github.com/temptationx</url>
+	
+    <requires>
+	</requires>
+    
+	<add>	
+		<src>
+			<folder name="addons/ofxTrueTypeFontUL2/src">
+				<file>src/ofxTrueTypeFontUL2.cpp</file>
+			</folder>
+		</src>
+
+		<include>
+			<path>./src</path>
+		</include>
+		
+		<link>
+		</link>
+
+	</add>
+	
+</install>
