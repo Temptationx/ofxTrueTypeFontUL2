@@ -1,4 +1,4 @@
-#include "ofxTrueTypeFontUL2.h"
+﻿#include "ofxTrueTypeFontUL2.h"
 //--------------------------
 
 #include "ft2build.h"
@@ -7,10 +7,15 @@
 #include <hb-ot.h>
 #include <map>
 #include <algorithm>
-
+#include <string>
+#include <locale.h> 
 
 #include "ofGraphics.h"
-
+#ifdef TARGET_WIN32
+#include <windows.h>
+#include <codecvt>
+#include <locale>
+#endif
 static int ttfGlobalDpi = 96;
 
 //--------------------------------------------------
@@ -159,13 +164,27 @@ namespace ul2_ttf_utils{
         return dst;
     }
 #endif
+std::wstring convToUTF32(const string &src) {
+		if (src.size() == 0) {
+			return L"";
+		}
+
+		// convert XXX -> UTF-16
+		const int n_size = ::MultiByteToWideChar(CP_UTF8, 0, src.c_str(), -1, NULL, 0);
+		std::wstring wstr(n_size-1, L'\x0');
+		::MultiByteToWideChar(CP_UTF8, 0, src.c_str(), -1, (LPWSTR)wstr.data(), n_size-1);
+
+		return wstr;
+	}
+
     wstring convToWString(string src) {
         
 #ifdef TARGET_WIN32
-        wstring dst = L"";
+		return convToUTF32(src);
+        /*wstring dst = L"";
         typedef codecvt<wchar_t, char, mbstate_t> codecvt_t;
         
-        locale loc = locale("");
+        locale loc = locale("en_US.UTF-8");
         if(!std::has_facet<codecvt_t>(loc))
             return dst;
         
@@ -187,7 +206,7 @@ namespace ul2_ttf_utils{
         if (conv.in(state, s, s + size, dummy, buf, buf + size, next) == codecvt_t::ok)
             dst = std::wstring(buf, next - buf);
         
-        return dst;
+        return dst;*/
 #elif defined __clang__
         wstring dst = L"";
         for (int i=0; i<src.size(); ++i)
