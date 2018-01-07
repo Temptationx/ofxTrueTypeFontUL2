@@ -4,18 +4,15 @@
 void testApp::setup(){
     
 	ofBackground(255,255,255);
-	ofNoFill();
-    faceNavi.loadFont("simhei.ttf" ,15);  //latin
+	//ofNoFill();
+    //faceNavi.loadFont("simhei.ttf" ,15);  //latin
 	  
 
 	//Load three font-faces.//////////////////////////////////////////////////////////
 
 
     //Load japanse face.
-    face.loadFont("simhei.ttf",24,true,true,0.3f,0,true)|| // windows 8.1
-		face.loadSubFont("YuMincho")|| // osx mavericks
-		face.loadSubFont("Meiryo")|| // windows 7
-		face.loadSubFont("Hiragino Mincho ProN W3"); // osx 
+	face.loadFont("simhei.ttf", 16, true, true, 0.3f, 0, true);
 	
 	//Load Latin face.   Fontsize = 120% , Baseline =-2% (to under)
 	//oadSubFont("simhei.ttf",1.2,-0.02);  //latin (OF_TTF_SERIF having arabic faces.)
@@ -47,7 +44,7 @@ void testApp::setup(){
 	show.append(L"ofxTrueTypeFontUL2: Openframeworks タイポグラフィ\n");
 	show.append(L"Wrote arabic: الأطر المفتوحة الطباعة غير موقعة طويل\n");
 	show.append(L"penFrameworksのAPIは、常に進化しています。ぜひ、修正、追加、コメントをしてください。\n");
-	show.append(L"The openFrameworks API is constantly evolving: any corrections, additions or comments are very welcome!");
+	show.append(L"你好");
 	
 
 
@@ -56,7 +53,7 @@ void testApp::setup(){
     strAlign="No Alignment [0]";
     strDirection="Left to Right (TTB)";
 
-	face.setStrokeWidth(1.0f);
+	face.setStrokeWidth(0.4f);
 }
 
 //--------------------------------------------------------------
@@ -74,35 +71,35 @@ void testApp::draw(){
 	h=mouseY-y;
 	
 	//base line
-	ofSetColor(255,127,255,255);
-	ofDrawLine(0,y,ofGetWidth(),y);
-	ofDrawLine(x,0,x,ofGetHeight());
-	
-	//cursor
-	ofSetColor(127,127,255,255);
-	ofDrawLine(mouseX,0,mouseX,ofGetHeight());
-	ofDrawLine(0,mouseY,ofGetWidth(),mouseY);
-    
+	//ofSetColor(255,127,255,255);
+	//ofDrawLine(0,y,ofGetWidth(),y);
+	//ofDrawLine(x,0,x,ofGetHeight());
+	//
+	////cursor
+	//ofSetColor(127,127,255,255);
+	//ofDrawLine(mouseX,0,mouseX,ofGetHeight());
+	//ofDrawLine(0,mouseY,ofGetWidth(),mouseY);
+ //   
 	//draw
 	if(bitmapRendering){
 		ofSetColor(0,0,0,255);
 		face.drawString(show,x,y,w,h,align);
 	}else{
-		ofSetColor(127,255,127,255);
+		//ofSetColor(127,255,127,255);
 		vector<ofRectangle> r = face.getStringBoxes(show,x,y,w,h,align);
-		for(int i=0;i<r.size();i++)ofDrawRectangle(r[i]);
-		ofSetColor(255,127,127,255);
+		//for(int i=0;i<r.size();i++)ofDrawRectangle(r[i]);
+		ofSetColor(0,0,0,255);
 		face.drawStringAsShapes(show,x,y,w,h,align);
-		ofSetColor(255,127,255,255);
-		ofDrawRectangle(face.getStringBoundingBox(show,x,y,w,h,align));
+		//ofSetColor(255,127,255,255);
+		//ofDrawRectangle(face.getStringBoundingBox(show,x,y,w,h,align));
 	}
     
-    ofSetColor(0,0,0,255);
-    faceNavi.drawString("Rendering mode [Space]: "+ofToString(bitmapRendering?"Bitmap":"Shapes"),50,ofGetHeight()-80);
-    faceNavi.drawString("Wrap-mode [key w]: "+ ofToString(face.getWordWrap()?"Word-wrap":"Character-wrap"),50,ofGetHeight()-50);
-    faceNavi.drawString("Alignment-mode [key e]: "+ ofToString(face.getAlignByPixel()?"Alignment by Pixel":"Optimized"),50,ofGetHeight()-20);
-    faceNavi.drawString("Text-Alignment [key 0-9]: "+strAlign,ofGetWidth()*.5,ofGetHeight()-50);
-    faceNavi.drawString("Text-Direction [key a,z,s,x,d,c,f,v]: "+strDirection,ofGetWidth()*.5,ofGetHeight()-20);
+    //ofSetColor(0,0,0,255);
+    //faceNavi.drawString("Rendering mode [Space]: "+ofToString(bitmapRendering?"Bitmap":"Shapes"),50,ofGetHeight()-80);
+    //faceNavi.drawString("Wrap-mode [key w]: "+ ofToString(face.getWordWrap()?"Word-wrap":"Character-wrap"),50,ofGetHeight()-50);
+    //faceNavi.drawString("Alignment-mode [key e]: "+ ofToString(face.getAlignByPixel()?"Alignment by Pixel":"Optimized"),50,ofGetHeight()-20);
+    //faceNavi.drawString("Text-Alignment [key 0-9]: "+strAlign,ofGetWidth()*.5,ofGetHeight()-50);
+    //faceNavi.drawString("Text-Direction [key a,z,s,x,d,c,f,v]: "+strDirection,ofGetWidth()*.5,ofGetHeight()-20);
 }
 
 //--------------------------------------------------------------

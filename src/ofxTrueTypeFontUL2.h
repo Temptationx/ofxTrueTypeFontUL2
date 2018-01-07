@@ -24,7 +24,9 @@ typedef struct {
 	float y;
 	int faceIndex;
 }ofxFaceVec2;
-
+namespace ul2_ttf_utils {
+	std::wstring convToWString(std::string src);
+};
 class ofxTrueTypeFontUL2 {
 public:
 	ofxTrueTypeFontUL2();
