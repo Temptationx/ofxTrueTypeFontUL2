@@ -164,6 +164,7 @@ namespace ul2_ttf_utils{
         return dst;
     }
 #endif
+#ifdef TARGET_WIN32
 std::wstring convToUTF32(const string &src) {
 		if (src.size() == 0) {
 			return L"";
@@ -176,7 +177,7 @@ std::wstring convToUTF32(const string &src) {
 
 		return wstr;
 	}
-
+#endif
     wstring convToWString(string src) {
         
 #ifdef TARGET_WIN32
